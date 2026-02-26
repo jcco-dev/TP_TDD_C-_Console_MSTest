@@ -19,6 +19,8 @@ namespace Panier.Core
             // ✅ Validation AVANT ajout
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Item name is required.", nameof(name));
+             
+            if (price <= 0) throw new ArgumentOutOfRangeException(nameof(price));
 
             // (Les validations price/quantity viendront dans les étapes suivantes)
             var item = new CartItem(name, price, quantity);

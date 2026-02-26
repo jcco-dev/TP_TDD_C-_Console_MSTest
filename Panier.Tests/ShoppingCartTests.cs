@@ -62,5 +62,12 @@ public class ShoppingCartTests
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => cart.AddItem("Pomme", 0m, 1));
     }
 
+    [TestMethod]
+    public void AddItem_QuantityLessOrEqualZero_Throws()
+    {
+        var cart = new ShoppingCart();
+
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => cart.AddItem("Pomme", 1m, 0));
+    }
 
 }
