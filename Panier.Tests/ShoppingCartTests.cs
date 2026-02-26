@@ -70,4 +70,14 @@ public class ShoppingCartTests
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => cart.AddItem("Pomme", 1m, 0));
     }
 
+    [TestMethod]
+    public void GetTotal_OneItem_IsPriceTimesQuantity()
+    {
+        var cart = new ShoppingCart();
+        cart.AddItem("Pomme", 2m, 3);
+
+        Assert.AreEqual(6m, cart.GetTotal());
+    }
+
+
 }

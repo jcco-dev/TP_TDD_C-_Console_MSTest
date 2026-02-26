@@ -22,6 +22,8 @@ namespace Panier.Core
              
             if (price <= 0) throw new ArgumentOutOfRangeException(nameof(price));
 
+            if (quantity <= 0) throw new ArgumentOutOfRangeException(nameof(quantity));
+
             // (Les validations price/quantity viendront dans les étapes suivantes)
             var item = new CartItem(name, price, quantity);
             items.Add(item);
