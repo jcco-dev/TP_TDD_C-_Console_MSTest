@@ -26,6 +26,12 @@ public class ShoppingCartTests
         Assert.AreEqual(0m, total);
     }
 
-   
+    [TestMethod]
+    public void ApplyDiscount_OnEmptyCart_Throws()
+    {
+        var cart = new ShoppingCart();
+
+        Assert.ThrowsExactly<InvalidOperationException>(() => cart.ApplyDiscount(10m));
+    }
 
 }
