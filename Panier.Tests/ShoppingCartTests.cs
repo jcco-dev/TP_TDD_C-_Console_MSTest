@@ -34,4 +34,12 @@ public class ShoppingCartTests
         Assert.ThrowsExactly<InvalidOperationException>(() => cart.ApplyDiscount(10m));
     }
 
+    [TestMethod]
+    public void AddItem_Valid_IncreasesItemCount()
+    {
+        var cart = new ShoppingCart();
+        cart.AddItem("Pomme", 1.5m, 2);
+        Assert.AreEqual(1, cart.GetItemCount());
+    }
+
 }
