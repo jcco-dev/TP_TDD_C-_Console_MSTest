@@ -16,6 +16,11 @@ namespace Panier.Core
 
         public void AddItem(string name, decimal price, int quantity) //=> throw new NotImplementedException();
         {
+            // ✅ Validation AVANT ajout
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Item name is required.", nameof(name));
+
+            // (Les validations price/quantity viendront dans les étapes suivantes)
             var item = new CartItem(name, price, quantity);
             items.Add(item);
         }
