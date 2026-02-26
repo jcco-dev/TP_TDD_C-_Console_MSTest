@@ -5,4 +5,16 @@ namespace Panier.Tests;
 [TestClass]
 public class ShoppingCartTests
 {
+    [TestMethod]
+    public void NewCart_ItemCount_IsZero()
+    {
+        // Arrange
+        var cart = new ShoppingCart();
+
+        // Act
+        var count = cart.GetItemCount();
+
+        // Assert
+        Assert.AreEqual(0, count);
+    }
 }
