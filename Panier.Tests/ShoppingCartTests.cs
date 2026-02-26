@@ -42,4 +42,11 @@ public class ShoppingCartTests
         Assert.AreEqual(1, cart.GetItemCount());
     }
 
+    [TestMethod]
+    public void AddItem_InvalidName_Throws()
+    {
+        var cart = new ShoppingCart();
+
+        Assert.ThrowsExactly<ArgumentException>(() => cart.AddItem("   ", 1m, 1));
+    }
 }
