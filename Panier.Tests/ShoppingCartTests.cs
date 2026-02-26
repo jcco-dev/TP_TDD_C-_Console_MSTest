@@ -17,4 +17,14 @@ public class ShoppingCartTests
         // Assert
         Assert.AreEqual(0, count);
     }
+
+    [TestMethod]
+    public void NewCart_Total_IsZero()
+    {
+        var cart = new ShoppingCart();
+        var total = cart.GetTotal();
+        Assert.AreEqual(0m, total);
+    }
+
+
 }
