@@ -121,4 +121,13 @@ public class ShoppingCartTests
 
         Assert.AreEqual(0m, cart.GetTotal());
     }
+
+    [TestMethod]
+    public void ApplyDiscount_Negative_Throws()
+    {
+        var cart = new ShoppingCart();
+        cart.AddItem("A", 10m, 1);
+
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => cart.ApplyDiscount(-1m));
+    }
 }
