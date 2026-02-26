@@ -26,5 +26,6 @@ public class ShoppingCartTests
         Assert.AreEqual(0m, total);
     }
 
+   
 
 }
