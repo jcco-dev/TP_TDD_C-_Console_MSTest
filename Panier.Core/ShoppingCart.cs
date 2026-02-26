@@ -7,8 +7,12 @@ namespace Panier.Core
     public sealed class ShoppingCart
     {
         // Collection interne initialisée
+        // Champs privés (en haut de la classe)
         private readonly List<CartItem> items = new();
+        private bool _discountApplied = false;
+        private decimal _discountPercentage = 0m;
 
+        // Méthodes ensuite
         public int GetItemCount() //=> throw new NotImplementedException();
         { 
             return items.Count; 
@@ -38,9 +42,27 @@ namespace Panier.Core
                 subtotal += item.Price * item.Quantity;
             }
 
+            if (_discountApplied)
+            {
+                subtotal = subtotal * (1 - (_discountPercentage / 100m));
+            }
+
             return subtotal;
         }
 
-        public void ApplyDiscount(decimal percentage) => throw new NotImplementedException();
+        public void ApplyDiscount(decimal percentage) //=> throw new NotImplementedException();
+        {
+            if (items.Count == 0)
+                throw new InvalidOperationException("Cannot apply discount to an empty cart.");
+
+            if (percentage < 0 || percentage > 100)
+                throw new ArgumentOutOfRangeException(nameof(percentage), "Discount must be between 0 and 100.");
+
+            if (_discountApplied)
+                throw new InvalidOperationException("Discount can only be applied once.");
+
+            _discountApplied = true;
+            _discountPercentage = percentage;
+        }
     }
 }
