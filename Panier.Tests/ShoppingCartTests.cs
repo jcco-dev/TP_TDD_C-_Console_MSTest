@@ -79,5 +79,14 @@ public class ShoppingCartTests
         Assert.AreEqual(6m, cart.GetTotal());
     }
 
+    [TestMethod]
+    public void GetTotal_MultipleItems_IsSumCorrect()
+    {
+        var cart = new ShoppingCart();
+        cart.AddItem("Pomme", 2m, 3);   // 6
+        cart.AddItem("Lait", 1.5m, 2);  // 3
+
+        Assert.AreEqual(9m, cart.GetTotal());
+    }
 
 }
