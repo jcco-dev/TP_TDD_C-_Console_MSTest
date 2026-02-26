@@ -14,7 +14,12 @@ namespace Panier.Core
             return items.Count; 
         }
 
-        public void AddItem(string name, decimal price, int quantity) => throw new NotImplementedException();
+        public void AddItem(string name, decimal price, int quantity) //=> throw new NotImplementedException();
+        {
+            var item = new CartItem(name, price, quantity);
+            items.Add(item);
+        }
+
         public decimal GetTotal() => throw new NotImplementedException();
         public void ApplyDiscount(decimal percentage) => throw new NotImplementedException();
     }
