@@ -130,4 +130,13 @@ public class ShoppingCartTests
 
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => cart.ApplyDiscount(-1m));
     }
+
+    [TestMethod]
+    public void ApplyDiscount_GreaterThan100_Throws()
+    {
+        var cart = new ShoppingCart();
+        cart.AddItem("A", 10m, 1);
+
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => cart.ApplyDiscount(101m));
+    }
 }
