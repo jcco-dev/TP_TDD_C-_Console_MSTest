@@ -139,4 +139,15 @@ public class ShoppingCartTests
 
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => cart.ApplyDiscount(101m));
     }
+
+    [TestMethod]
+    public void ApplyDiscount_Twice_Throws()
+    {
+        var cart = new ShoppingCart();
+        cart.AddItem("A", 10m, 1);
+
+        cart.ApplyDiscount(10m);
+
+        Assert.ThrowsExactly<InvalidOperationException>(() => cart.ApplyDiscount(10m));
+    }
 }
