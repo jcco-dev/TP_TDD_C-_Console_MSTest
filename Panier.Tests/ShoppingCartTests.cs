@@ -111,4 +111,14 @@ public class ShoppingCartTests
         Assert.AreEqual(10m, cart.GetTotal());
     }
 
+    [TestMethod]
+    public void ApplyDiscount_100Percent_TotalZero()
+    {
+        var cart = new ShoppingCart();
+        cart.AddItem("A", 10m, 1);
+
+        cart.ApplyDiscount(100m);
+
+        Assert.AreEqual(0m, cart.GetTotal());
+    }
 }
