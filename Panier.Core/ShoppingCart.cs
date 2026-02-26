@@ -29,7 +29,18 @@ namespace Panier.Core
             items.Add(item);
         }
 
-        public decimal GetTotal() => throw new NotImplementedException();
+        public decimal GetTotal() //=> throw new NotImplementedException();
+        {
+            decimal subtotal = 0m;
+
+            foreach (var item in items)
+            {
+                subtotal += item.Price * item.Quantity;
+            }
+
+            return subtotal;
+        }
+
         public void ApplyDiscount(decimal percentage) => throw new NotImplementedException();
     }
 }
